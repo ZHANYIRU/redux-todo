@@ -1,17 +1,17 @@
 import { useState } from "react";
 
-function EditTodo({ id, text, edit }) {
-  const [editText, setEditText] = useState(text);
+function EditTodo({ id, text, editText, dispatch }) {
+  const [editTextValue, setEditTextValue] = useState(text);
   return (
     <input
       type="text"
       className="text"
-      value={editText}
+      value={editTextValue}
       onChange={(e) => {
-        setEditText(e.target.value);
+        setEditTextValue(e.target.value);
       }}
       onKeyDown={(e) => {
-        if (e.key === "Enter") edit(id, editText);
+        if (e.key === "Enter") dispatch(editText(id, editTextValue));
       }}
     />
   );

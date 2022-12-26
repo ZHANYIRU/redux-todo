@@ -1,27 +1,7 @@
 import EditTodo from "./EditTodo";
 import { HiX } from "react-icons/hi";
-import { delTodo, okTodo } from "./action/action";
+import { delTodo, okTodo, editing, editText } from "../action/action";
 function TodoItem({ todoInit, dispatch }) {
-  // const editing = (id) => {
-  //   const newTodo = todo.map((v) => {
-  //     if (v.id === id) {
-  //       return { ...v, edit: true };
-  //     }
-  //     return { ...v };
-  //   });
-  //   setTodo(newTodo);
-  // };
-  // const edit = (id, text) => {
-  //   const newTodo = todo.map((v) => {
-  //     if (v.id === id) {
-  //       return { ...v, text: text, edit: false };
-  //     }
-  //     return { ...v };
-  //   });
-  //   setTodo(newTodo);
-  // };
-  const editing = () => {};
-  const edit = () => {};
   return todoInit.map((el, i) => {
     return (
       <div className="matter" key={el.id}>
@@ -34,11 +14,16 @@ function TodoItem({ todoInit, dispatch }) {
           />
           <label htmlFor={el.id}></label>
           {el.edit ? (
-            <EditTodo id={el.id} text={el.text} edit={edit} />
+            <EditTodo
+              id={el.id}
+              text={el.text}
+              editText={editText}
+              dispatch={dispatch}
+            />
           ) : (
             <p
               style={{ textDecoration: el.completed && "line-through" }}
-              onDoubleClick={() => editing(el.id)}
+              onDoubleClick={() => dispatch(editing(el.id))}
             >
               {el.text}
             </p>
