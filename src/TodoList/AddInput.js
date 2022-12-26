@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-
-function AddInput({ addTodo }) {
+import { useState } from "react";
+import { addTodo } from "./action/action";
+function AddInput({ dispatch }) {
   //可控表單用
   const [addValue, setAddValue] = useState("");
   return (
@@ -12,7 +12,7 @@ function AddInput({ addTodo }) {
       />
       <button
         onClick={() => {
-          if (addValue !== "") addTodo(addValue);
+          if (addValue !== "") dispatch(addTodo(addValue));
           setAddValue("");
         }}
       >

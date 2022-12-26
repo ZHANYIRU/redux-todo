@@ -1,32 +1,35 @@
 import EditTodo from "./EditTodo";
 import { HiX } from "react-icons/hi";
-function TodoItem({ todo, setTodo, delTodo, okTodo }) {
-  const editing = (id) => {
-    const newTodo = todo.map((v) => {
-      if (v.id === id) {
-        return { ...v, edit: true };
-      }
-      return { ...v };
-    });
-    setTodo(newTodo);
-  };
-  const edit = (id, text) => {
-    const newTodo = todo.map((v) => {
-      if (v.id === id) {
-        return { ...v, text: text, edit: false };
-      }
-      return { ...v };
-    });
-    setTodo(newTodo);
-  };
-  return todo.map((el, i) => {
+import { delTodo, okTodo } from "./action/action";
+function TodoItem({ todoInit, dispatch }) {
+  // const editing = (id) => {
+  //   const newTodo = todo.map((v) => {
+  //     if (v.id === id) {
+  //       return { ...v, edit: true };
+  //     }
+  //     return { ...v };
+  //   });
+  //   setTodo(newTodo);
+  // };
+  // const edit = (id, text) => {
+  //   const newTodo = todo.map((v) => {
+  //     if (v.id === id) {
+  //       return { ...v, text: text, edit: false };
+  //     }
+  //     return { ...v };
+  //   });
+  //   setTodo(newTodo);
+  // };
+  const editing = () => {};
+  const edit = () => {};
+  return todoInit.map((el, i) => {
     return (
       <div className="matter" key={el.id}>
         <div>
           <input
             type="checkbox"
             checked={el.completed}
-            onChange={() => okTodo(el.id)}
+            onChange={() => dispatch(okTodo(el.id))}
             id={el.id}
           />
           <label htmlFor={el.id}></label>
@@ -41,7 +44,7 @@ function TodoItem({ todo, setTodo, delTodo, okTodo }) {
             </p>
           )}
         </div>
-        <HiX onClick={() => delTodo(el.id)} />
+        <HiX onClick={() => dispatch(delTodo(el.id))} />
       </div>
     );
   });
