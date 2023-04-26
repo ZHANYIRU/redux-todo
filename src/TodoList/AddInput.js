@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { addTodo } from "../action/action";
-function AddInput({ dispatch }) {
+function AddInput({ dispatch, t }) {
   //可控表單用
   const [addValue, setAddValue] = useState("");
   return (
