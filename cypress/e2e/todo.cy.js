@@ -19,7 +19,7 @@ describe('template spec', () => {
     cy.get('@abc').last().find('svg').click()
     cy.get('@abc')
       .last()
-      .invoke('text')
+      .invoke('textt')
       .then((text) => {
         expect(text).not.to.include(newItem)
       })
