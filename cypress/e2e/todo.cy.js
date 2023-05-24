@@ -1,6 +1,6 @@
-describe("template spec", () => {
+describe("todo list", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000/redux-todo");
+    cy.visit("http://localhost:3001/redux-todo");
   });
   it("add item in todo", () => {
     const newItem = "test";
