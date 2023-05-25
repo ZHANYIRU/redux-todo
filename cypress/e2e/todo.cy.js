@@ -15,6 +15,7 @@ describe("todo list", () => {
       cy.get(".matterWrap .matter").last().should("contain.text", newItem);
     });
   });
+
   it("del item", () => {
     const newItem = "test";
     cy.get(".matterWrap .matter").as("abc");
