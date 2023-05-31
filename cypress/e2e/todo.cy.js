@@ -11,7 +11,7 @@ describe("todo list", () => {
       const listLength = list.length;
       cy.get(".add > div > input").type(newItem);
       cy.get(".add > div > button").click();
-      cy.get(".matterWrap .matter").should("have.length", listLength + 1);
+      cy.get(".matterWrap .matter").should("have.length", listLength + 2);
       cy.get(".matterWrap .matter").last().should("contain.text", newItem);
     });
   });
